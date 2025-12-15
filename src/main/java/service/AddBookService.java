@@ -1,13 +1,7 @@
 package service;
 
-import model.entity.Books;
-import repository.AddBookRepository;
+import model.dto.BookDTO;
 
-public class AddBookService {
-
-    private AddBookRepository addBookRepository = new AddBookRepository();
-
-    public String saveBook (Books books){
-        return addBookRepository.save(books);
-    }
+public interface AddBookService {
+    void addBook(String id, String title, String author, String category, int qty);
 }
