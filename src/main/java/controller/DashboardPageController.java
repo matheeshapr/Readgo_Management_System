@@ -11,7 +11,7 @@ public class DashboardPageController {
     public void btbonaddbook(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddBook.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddBookPage.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
