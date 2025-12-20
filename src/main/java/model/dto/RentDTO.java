@@ -1,7 +1,13 @@
 package model.dto;
 
-import java.util.Date;
+import lombok.*;
 
+import java.util.Date;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class RentDTO {
     private String name;
     private String id;
