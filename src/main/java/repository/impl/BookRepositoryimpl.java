@@ -1,14 +1,13 @@
 package repository.impl;
 
 import db.DBConnection;
-import model.dto.BookDTO;
-import repository.AddBookRepository;
+import repository.BookRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AddBookRepositoryimpl implements AddBookRepository {
+public class BookRepositoryimpl implements BookRepository {
 
     @Override
     public void addBook(String id, String title, String author, String category, int qty) {
