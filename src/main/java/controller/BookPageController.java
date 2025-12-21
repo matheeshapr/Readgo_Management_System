@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import service.impl.AddBookServiceimpl;
+import service.impl.BookServiceimpl;
 
-public class AddBookPageController {
+public class BookPageController {
 
     @FXML
     private TextField txtId;
@@ -23,7 +23,7 @@ public class AddBookPageController {
     @FXML
     private TextField txtQnty;
 
-    private AddBookServiceimpl addBookService = new AddBookServiceimpl();
+    private BookServiceimpl addBookService = new BookServiceimpl();
 
     @FXML
     void btnAddBook(ActionEvent event) {
