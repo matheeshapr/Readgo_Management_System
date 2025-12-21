@@ -12,7 +12,10 @@
             <Font size="45.0" />
          </font>
       </Label>
-      <Button layoutX="259.0" layoutY="131.0" mnemonicParsing="false" onAction="#btbonaddbook" text="ADD BOOKS" />
-      <Button layoutX="248.0" layoutY="188.0" mnemonicParsing="false" onAction="#btbonaddcustomer" text="ADD CUSTOMER" />
+      <Button layoutX="259.0" layoutY="131.0" mnemonicParsing="false" onAction="#btbonaddbook" text="BOOKS" />
+      <Button layoutX="248.0" layoutY="188.0" mnemonicParsing="false" onAction="#btbonaddcustomer" text="CUSTOMER" />
+      <Button layoutX="264.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnonrent" text="RENT" />
+      <Button layoutX="257.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnonreturn" text="RETURN" />
+      <Button layoutX="257.0" layoutY="330.0" mnemonicParsing="false" onAction="#btnonreport" text="REPORT" />
    </children>
 </AnchorPane>
