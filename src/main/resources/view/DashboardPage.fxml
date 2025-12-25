@@ -1,21 +1,296 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardPageController">
-   <children>
-      <Label layoutX="192.0" layoutY="29.0" text="Dashboard">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Label>
-      <Button layoutX="259.0" layoutY="131.0" mnemonicParsing="false" onAction="#btbonaddbook" text="BOOKS" />
-      <Button layoutX="248.0" layoutY="188.0" mnemonicParsing="false" onAction="#btbonaddcustomer" text="CUSTOMER" />
-      <Button layoutX="264.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnonrent" text="RENT" />
-      <Button layoutX="257.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnonreturn" text="RETURN" />
-      <Button layoutX="257.0" layoutY="330.0" mnemonicParsing="false" onAction="#btnonreport" text="REPORT" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardPageController">
+
+    <left>
+        <VBox prefHeight="650.0" prefWidth="240.0" style="-fx-background-color: #3E2723;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="5.0">
+                    <children>
+                        <Text fill="#fff8e1" strokeType="OUTSIDE" strokeWidth="0.0" text="📚 ReadGo">
+                            <font>
+                                <Font name="System Bold" size="30.0" />
+                            </font>
+                        </Text>
+                        <Label text="Library Management" textFill="#bcaaa4">
+                            <font>
+                                <Font size="11.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+
+                <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="MAIN MENU" textFill="#a1887f">
+                            <font>
+                                <Font name="System Bold" size="10.0" />
+                            </font>
+                            <padding>
+                                <Insets left="20.0" />
+                            </padding>
+                        </Label>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: #5D4037; -fx-cursor: hand;" text="Dashboard" textFill="#fff8e1">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btbonaddbook" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Manage Books" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="72.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btbonaddcustomer" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Manage Customers" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="117.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnonrent" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Issue Books (Rent)" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="162.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnonreturn" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Book Returns" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="207.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnonreport" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Reports &amp; Analytics" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="252.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Settings" textFill="#d7ccc8">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </VBox>
+
+                <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: #311F1B; -fx-cursor: hand;" text="Log Out" textFill="#ff8a80">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="25.0" prefHeight="60.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                    <children>
+                        <Label text="Dashboard Overview" textFill="#5d4037">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label text="Welcome, Admin" textFill="#8d6e63">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <Label text="👤" textFill="#5d4037">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets right="5.0" />
+                                    </padding>
+                                </Label>
+                            </graphic>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="20.0" right="20.0" />
+                    </padding>
+                    <effect>
+                        <DropShadow color="#0000001a" height="10.0" radius="4.5" width="0.0" />
+                    </effect>
+                </HBox>
+
+                <HBox layoutX="30.0" layoutY="120.0" spacing="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                    <children>
+
+                        <VBox prefHeight="120.0" prefWidth="180.0" style="-fx-background-color: white; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Total Books" textFill="#8d6e63">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label text="1,250" textFill="#3e2723">
+                                    <font>
+                                        <Font name="System Bold" size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label text="📚 Available in stock" textFill="#757575">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                            </padding>
+                            <effect>
+                                <DropShadow color="#00000010" height="10.0" radius="4.5" width="0.0" />
+                            </effect>
+                        </VBox>
+
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="120.0" prefWidth="180.0" style="-fx-background-color: white; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Members" textFill="#8d6e63">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label text="480" textFill="#3e2723">
+                                    <font>
+                                        <Font name="System Bold" size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label text="👥 Active readers" textFill="#757575">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                            </padding>
+                            <effect>
+                                <DropShadow color="#00000010" height="10.0" radius="4.5" width="0.0" />
+                            </effect>
+                        </VBox>
+
+                        <VBox layoutX="268.0" layoutY="10.0" prefHeight="120.0" prefWidth="180.0" style="-fx-background-color: white; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Books Issued" textFill="#8d6e63">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label text="124" textFill="#3e2723">
+                                    <font>
+                                        <Font name="System Bold" size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label text="🔄 Currently rented" textFill="#757575">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                            </padding>
+                            <effect>
+                                <DropShadow color="#00000010" height="10.0" radius="4.5" width="0.0" />
+                            </effect>
+                        </VBox>
+
+                        <VBox layoutX="526.0" layoutY="10.0" prefHeight="120.0" prefWidth="180.0" style="-fx-background-color: #FFEBEE; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Overdue" textFill="#d32f2f">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label text="12" textFill="#c62828">
+                                    <font>
+                                        <Font name="System Bold" size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label text="⚠️ Need attention" textFill="#ef5350">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                            </padding>
+                            <effect>
+                                <DropShadow color="#00000010" height="10.0" radius="4.5" width="0.0" />
+                            </effect>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <VBox alignment="CENTER" layoutX="30.0" layoutY="280.0" opacity="0.3" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="270.0">
+                    <children>
+                        <Label text="📖" textFill="#3e2723">
+                            <font>
+                                <Font size="80.0" />
+                            </font>
+                        </Label>
+                        <Label text="Select an option from the sidebar to manage library operations." textFill="#5d4037">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
