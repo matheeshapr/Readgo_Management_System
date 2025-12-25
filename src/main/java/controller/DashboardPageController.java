@@ -28,4 +28,13 @@ public class DashboardPageController {
         stage.show();
 
     }
+
+    public void btnonrent(ActionEvent actionEvent) {
+    }
+
+    public void btnonreturn(ActionEvent actionEvent) {
+    }
+
+    public void btnonreport(ActionEvent actionEvent) {
+    }
 }
