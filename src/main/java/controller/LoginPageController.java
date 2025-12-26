@@ -25,26 +25,18 @@ public class LoginPageController {
 
     @FXML
     void onbtnlogin(ActionEvent event) {
-        String uname = txtuName.getText();
-        String pword = txtpWord.getText();
-
-        //if (uname.equals("admin") && pword.equals(("1234"))){
-            navigateDashboard();
-//        }
-//        else {
-//            new Alert(Alert.AlertType.ERROR,"Invalidate Username or Password").show();
-//        }
-
-    }
-
-    private void navigateDashboard() {
-        Stage stage = new Stage();
+      Stage stage = new Stage();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         stage.show();
+
     }
+
+//    private void navigateDashboard() {
+//
+//    }
 
 }
