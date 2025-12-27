@@ -1,68 +1,186 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import service.impl.BookServiceimpl;
+import model.dto.BookDTO;
+import service.BookService;
+import service.impl.BookServiceImpl;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class BookPageController {
+public class BookPageController implements Initializable {
 
-    @FXML
-    private TextField txtId;
+    private BookService bookService = new BookServiceImpl();
+    private ObservableList<BookDTO> bookList = FXCollections.observableArrayList();
 
-    @FXML
-    private TextField txtTitle;
+    @FXML private TableView<BookDTO> tblBooks;
 
-    @FXML
-    private TextField txtAuthor;
+    @FXML private TableColumn<?, ?> colId;
+    @FXML private TableColumn<?, ?> colTitle;
+    @FXML private TableColumn<?, ?> colAuthor;
+    @FXML private TableColumn<?, ?> colCategory;
+    @FXML private TableColumn<?, ?> colPrice;
+    @FXML private TableColumn<?, ?> colQty;
+    @FXML private TableColumn<?, ?> colStatus;
 
-    @FXML
-    private TextField txtCategory;
+    @FXML private TextField txtId;
+    @FXML private TextField txtTitle;
+    @FXML private TextField txtAuthor;
+    @FXML private TextField txtCategory;
+    @FXML private TextField txtPrice;
+    @FXML private TextField txtQnty;
 
-    @FXML
-    private TextField txtQnty;
+    // වෙනස 1: ComboBox එක වෙනුවට TextField එකක් දැම්මා
+    @FXML private TextField txtStatus;
 
-    private BookServiceimpl addBookService = new BookServiceimpl();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        loadAllItems();
+
+        tblBooks.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (newValue != null) {
+                setSelectedValue(newValue);
+            }
+        });
+    }
 
     @FXML
     void btnAddBook(ActionEvent event) {
+        try {
+            String id = txtId.getText();
+            String title = txtTitle.getText();
+            String author = txtAuthor.getText();
+            String category = txtCategory.getText();
+            double price = Double.parseDouble(txtPrice.getText());
+            int qty = Integer.parseInt(txtQnty.getText());
+
+            // වෙනස 2: TextField එකෙන් Text එක ගන්නවා
+            String status = txtStatus.getText();
+
+            bookService.addBook(id, title, author, category, price, qty, status);
+
+            new Alert(Alert.AlertType.INFORMATION, "Book Added Successfully!").show();
+            clearFields();
+            loadAllItems();
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Input for Price or Qty").show();
+        } catch (RuntimeException e) {
+            new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void btnUpdate(ActionEvent event) {
+        try {
+            String id = txtId.getText();
+            String title = txtTitle.getText();
+            String author = txtAuthor.getText();
+            String category = txtCategory.getText();
+            double price = Double.parseDouble(txtPrice.getText());
+            int qty = Integer.parseInt(txtQnty.getText());
+
+            // වෙනස 3: Update එකටත් text එක ගන්නවා
+            String status = txtStatus.getText();
+
+            bookService.updateBook(id, title, author, category, price, qty, status);
+
+            new Alert(Alert.AlertType.INFORMATION, "Book Updated Successfully!").show();
+            clearFields();
+            loadAllItems();
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Input!").show();
+        } catch (RuntimeException e) {
+            new Alert(Alert.AlertType.ERROR, "Update Failed: " + e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void btnDelete(ActionEvent event) {
         String id = txtId.getText();
-        String title = txtTitle.getText();
-        String author = txtAuthor.getText();
-        String category = txtCategory.getText();
-        int qty = Integer.parseInt(txtQnty.getText());
 
-        addBookService.addBook(id, title, author, category, qty);
+        if (id.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a book first!").show();
+            return;
+        }
 
-        new Alert(Alert.AlertType.INFORMATION, "Book Added Successfully!").show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+
+        if (buttonType.isPresent() && buttonType.get() == ButtonType.YES) {
+            try {
+                bookService.deleteBook(id);
+                new Alert(Alert.AlertType.INFORMATION, "Book Deleted!").show();
+                clearFields();
+                loadAllItems();
+            } catch (RuntimeException e) {
+                new Alert(Alert.AlertType.ERROR, "Delete Failed: " + e.getMessage()).show();
+            }
+        }
+    }
+
+    @FXML
+    void btnClear(ActionEvent event) {
         clearFields();
     }
 
+    private void loadAllItems() {
+        bookList.clear();
+        bookList.addAll(bookService.getAllBooks());
+        tblBooks.setItems(bookList);
+    }
+
+    private void setSelectedValue(BookDTO selectedValue) {
+        if (selectedValue == null) {
+            clearFields();
+            return;
+        }
+        txtId.setText(selectedValue.getId());
+        txtTitle.setText(selectedValue.getTitle());
+        txtAuthor.setText(selectedValue.getAuthor());
+        txtCategory.setText(selectedValue.getCategory());
+        txtPrice.setText(String.valueOf(selectedValue.getPrice()));
+        txtQnty.setText(String.valueOf(selectedValue.getQty()));
+
+        // වෙනස 4: Table එකෙන් එන value එක Text Field එකට set කරනවා
+        txtStatus.setText(selectedValue.getStatus());
+    }
+
     private void clearFields() {
-        txtId.setText("");
-        txtTitle.setText("");
-        txtAuthor.setText("");
-        txtCategory.setText("");
-        txtQnty.setText("");
+        txtId.clear();
+        txtTitle.clear();
+        txtAuthor.clear();
+        txtCategory.clear();
+        txtPrice.clear();
+        txtQnty.clear();
+
+        // වෙනස 5: Clear කරන කොටස
+        txtStatus.clear();
+
+        tblBooks.getSelectionModel().clearSelection();
     }
 
-
-    public void btnUpdate(ActionEvent actionEvent) {
-    }
-
-    public void btnDelete(ActionEvent actionEvent) {
-    }
-
-    public void btnClear(ActionEvent actionEvent) {
-    }
-
-    public void btnonback(ActionEvent actionEvent) {
+    public void btnBackOnAction(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
@@ -71,5 +189,4 @@ public class BookPageController {
         }
         stage.show();
     }
-
 }
