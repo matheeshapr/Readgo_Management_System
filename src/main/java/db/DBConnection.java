@@ -11,7 +11,7 @@ public class DBConnection {
     private DBConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/book_rental_db", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/readgo_db", "root", "1234");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Database Driver not found!");
         }
