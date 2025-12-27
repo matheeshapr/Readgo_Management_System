@@ -43,4 +43,6 @@ public class CustomerPageController {
         txtEmail.setText("");
     }
 
+    public void btnBackOnAction(ActionEvent actionEvent) {
+    }
 }
