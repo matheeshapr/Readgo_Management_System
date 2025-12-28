@@ -41,7 +41,6 @@ public class BookPageController implements Initializable {
     @FXML private TextField txtPrice;
     @FXML private TextField txtQnty;
 
-    // වෙනස 1: ComboBox එක වෙනුවට TextField එකක් දැම්මා
     @FXML private TextField txtStatus;
 
     @Override
@@ -73,7 +72,6 @@ public class BookPageController implements Initializable {
             double price = Double.parseDouble(txtPrice.getText());
             int qty = Integer.parseInt(txtQnty.getText());
 
-            // වෙනස 2: TextField එකෙන් Text එක ගන්නවා
             String status = txtStatus.getText();
 
             bookService.addBook(id, title, author, category, price, qty, status);
@@ -99,7 +97,6 @@ public class BookPageController implements Initializable {
             double price = Double.parseDouble(txtPrice.getText());
             int qty = Integer.parseInt(txtQnty.getText());
 
-            // වෙනස 3: Update එකටත් text එක ගන්නවා
             String status = txtStatus.getText();
 
             bookService.updateBook(id, title, author, category, price, qty, status);
@@ -162,7 +159,6 @@ public class BookPageController implements Initializable {
         txtPrice.setText(String.valueOf(selectedValue.getPrice()));
         txtQnty.setText(String.valueOf(selectedValue.getQty()));
 
-        // වෙනස 4: Table එකෙන් එන value එක Text Field එකට set කරනවා
         txtStatus.setText(selectedValue.getStatus());
     }
 
@@ -174,7 +170,6 @@ public class BookPageController implements Initializable {
         txtPrice.clear();
         txtQnty.clear();
 
-        // වෙනස 5: Clear කරන කොටස
         txtStatus.clear();
 
         tblBooks.getSelectionModel().clearSelection();
