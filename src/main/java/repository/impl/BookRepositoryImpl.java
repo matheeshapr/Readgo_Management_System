@@ -43,7 +43,7 @@ public class BookRepositoryImpl implements BookRepository {
             PreparedStatement pstm = connection.prepareStatement(SQL);
             pstm.setObject(1, id);
 
-            pstm.executeUpdate(); // ඔයාගේ Customer එකේ මේ පේළිය මිස් වෙලා තිබුනා, ඒකත් හදාගන්න
+            pstm.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,7 +65,7 @@ public class BookRepositoryImpl implements BookRepository {
             pstm.setObject(4, price);
             pstm.setObject(5, qty);
             pstm.setObject(6, status);
-            pstm.setObject(7, id); // ID එක WHERE condition එකට
+            pstm.setObject(7, id);
 
             pstm.executeUpdate();
 
