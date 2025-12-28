@@ -12,7 +12,6 @@ import java.sql.SQLException;
 
 public class BookServiceImpl implements BookService {
 
-    // Repository එක Connect කරගැනීම
     BookRepository bookRepository = new BookRepositoryImpl();
 
     @Override
@@ -32,14 +31,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ObservableList<BookDTO> getAllBooks() {
-        // JavaFX ObservableList එකක් සෑදීම
         ObservableList<BookDTO> allBooks = FXCollections.observableArrayList();
 
         try {
-            // Repository එකෙන් ResultSet එක ලබා ගැනීම
             ResultSet resultSet = bookRepository.getAllBooks();
 
-            // ResultSet එකේ ඇති Data, BookDTO එකක් බවට පත් කර List එකට දැමීම
             while (resultSet.next()) {
                 allBooks.add(new BookDTO(
                         resultSet.getString("id"),
@@ -73,7 +69,7 @@ public class BookServiceImpl implements BookService {
                         resultSet.getString("status")
                 );
             }
-            return null; // Book එකක් හමු නොවුනොත් null යවයි
+            return null;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
