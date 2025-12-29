@@ -35,8 +35,14 @@ public class LoginPageController {
 
     }
 
-//    private void navigateDashboard() {
-//
-//    }
+    public void btnSignupOnAction(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/NewUserPage.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
+    }
 
 }
