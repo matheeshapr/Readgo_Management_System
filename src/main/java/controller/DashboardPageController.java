@@ -1,73 +1,64 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class DashboardPageController {
-    public void btbonaddbook(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/BookPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+
+    @FXML private AnchorPane root;
+
+    @FXML
+    void btbonaddbook(ActionEvent event) throws IOException {
+        // Button Click Event එක method එකට pass කරනවා
+        setUi("/view/BookPage.fxml", event);
     }
 
-    public void btbonaddcustomer(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CustomerPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
-
+    @FXML
+    void btbonaddcustomer(ActionEvent event) throws IOException {
+        setUi("/view/CustomerPage.fxml", event);
     }
 
-    public void btnonrent(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/RentPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    @FXML
+    void btnonrent(ActionEvent event) throws IOException {
+        setUi("/view/RentPage.fxml", event);
     }
 
-    public void btnonreturn(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReturnPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    @FXML
+    void btnonreturn(ActionEvent event) throws IOException {
+        setUi("/view/ReturnPage.fxml", event);
     }
 
-    public void btnonreport(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    @FXML
+    void btnonreport(ActionEvent event) throws IOException {
+        setUi("/view/ReportPage.fxml", event);
     }
 
-    public void btnOnLogout(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    @FXML
+    void btnOnLogout(ActionEvent event) throws IOException {
+        setUi("/view/LoginPage.fxml", event);
+    }
 
+    // --- SINGLE WINDOW NAVIGATION METHOD ---
+    private void setUi(String location, ActionEvent event) throws IOException {
+// 1. ඔබපු Button එක හරහා දැනට තියෙන Stage (Window) එක ගන්නවා
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // 2. අලුත් FXML එක Load කරනවා
+        Parent root = FXMLLoader.load(getClass().getResource(location));
+
+        // 3. Stage එක වහන්නේ නැතුව, ඒකේ Scene එක මාරු කරනවා
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen(); // මැදට එන්න (කැමති නම් විතරක්)
+        stage.show();
     }
 
     public void btnonsettings(ActionEvent actionEvent) {
