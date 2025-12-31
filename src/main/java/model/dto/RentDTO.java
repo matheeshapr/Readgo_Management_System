@@ -19,7 +19,6 @@ public class RentDTO {
         this.status = status;
     }
 
-    // Getters and Setters
     public String getRentId() { return rentId; }
     public void setRentId(String rentId) { this.rentId = rentId; }
 
