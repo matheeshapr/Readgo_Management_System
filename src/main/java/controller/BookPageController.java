@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -175,13 +176,15 @@ public class BookPageController implements Initializable {
         tblBooks.getSelectionModel().clearSelection();
     }
 
-    public void btnBackOnAction(ActionEvent actionEvent) {
-        Stage stage = new Stage();
+    @FXML
+    void btnBackOnAction(ActionEvent event) {
         try {
+            // Single Window Logic එක මෙතනත් පාවිච්චි කරනවා
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
+            stage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-        stage.show();
     }
 }
