@@ -4,13 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.dto.CustomerDTO;
 import service.CustomerService;
 import service.impl.CustomerServiceImpl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -134,7 +139,16 @@ public class CustomerPageController implements Initializable {
         tblCustomers.getSelectionModel().clearSelection();
     }
 
-    public void btnBackOnAction(ActionEvent actionEvent) {
+    @FXML
+    void btnBackOnAction(ActionEvent event) {
+        try {
+            // Single Window Logic එක මෙතනත් පාවිච්චි කරනවා
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
