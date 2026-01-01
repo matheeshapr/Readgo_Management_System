@@ -14,7 +14,6 @@ public class UserRepositoryImpl implements UserRepository {
         try {
             Connection connection = DBConnection.getInstance().getConnection();
 
-            // Query එක (Tables හදනකොට දුන්න පිළිවෙලට: id, username, password, role)
             String sql = "INSERT INTO user VALUES(?, ?, ?, ?)";
 
             PreparedStatement pstm = connection.prepareStatement(sql);
