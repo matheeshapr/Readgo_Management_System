@@ -30,7 +30,12 @@ public class LoginPageController {
         try {
             // Single Window Logic එක මෙතනත් පාවිච්චි කරනවා
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
+            if(txtuName.getText().equals("admin") && txtpWord.getText().equals("admin")) {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardPage.fxml"))));
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid Username or Password").show();
+                return;
+            }
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
