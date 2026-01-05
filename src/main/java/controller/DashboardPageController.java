@@ -46,7 +46,6 @@ public class DashboardPageController {
         setUi("/view/LoginPage.fxml", event);
     }
 
-    // --- SINGLE WINDOW NAVIGATION METHOD ---
     private void setUi(String location, ActionEvent event) throws IOException {
 // 1. ඔබපු Button එක හරහා දැනට තියෙන Stage (Window) එක ගන්නවා
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
