@@ -90,7 +90,7 @@ public class CustomerPageController implements Initializable {
     void btnDeleteCustomer(ActionEvent event) {
         String id = txtId.getText();
         if (id.isEmpty()) {
-            new Alert(Alert.AlertType.WARNING, "Select a customer first!").show();
+            new Alert(Alert.AlertType.WARNING, "Select a customer first!!").show();
             return;
         }
 
